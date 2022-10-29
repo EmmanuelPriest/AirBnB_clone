@@ -94,7 +94,10 @@ class HBNBCommand(cmd.Cmd):
         print("Exits the program without formatting\n")
 
     def do_create(self, arg):
-        '''Creates a new instance of BaseModel and prints its id'''
+        '''
+        Creates a new instance of BaseModel and prints its id
+        Usage: create <class>
+        '''
 
         arg_len = parse(arg)
         if len(arg_len) == 0:
