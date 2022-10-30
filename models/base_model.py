@@ -2,7 +2,7 @@
 
 '''Defines the class BaseModel'''
 import models
-import uuid import uuid4
+from uuid import uuid4
 from datetime import datetime
 
 
