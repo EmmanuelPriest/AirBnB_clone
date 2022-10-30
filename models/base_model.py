@@ -2,7 +2,7 @@
 
 '''Defines the class BaseModel'''
 import models
-import uuid
+import uuid import uuid4
 from datetime import datetime
 
 
@@ -17,9 +17,9 @@ class BaseModel:
             **kwargs (dict): Key/value pairs of attributes
         '''
         isotformat = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.id = str(uuid4())
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
@@ -31,9 +31,8 @@ class BaseModel:
 
     def save(self):
         '''Update updated_at with the current time'''
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.today()
         models.storage.save()
-        return
 
     def to_dict(self):
         '''Returns a dictionary containing all keys/values of __dict__
@@ -41,9 +40,9 @@ class BaseModel:
         of the instance
         '''
         return_dict = self.__dict__.copy()
-        return_dict.update({"__class__": str(self.__class__.__name__)})
         return_dict["created_at"] = self.created_at.isoformat()
         return_dict["updated_at"] = self.updated_at.isoformat()
+        return_dict["__class__"] = self.__class__.__name__
         return return_dict
 
     def __str__(self):
@@ -52,4 +51,4 @@ class BaseModel:
         this format: [<class name>] (<self.id>) <self.__dict__>
         '''
         temp = self.__class__.__name__
-        return (f"[{temp}] ({self.id}) {self.__dict__}")
+        return "[{}] ({}) {}".format(temp, self.id, self.__dict__)
