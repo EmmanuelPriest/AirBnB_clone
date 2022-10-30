@@ -12,7 +12,7 @@ from models.review import Review
 
 
 class FileStorage:
-    '''serializes instances to a JSON file and deserializes
+    '''Serializes instances to a JSON file and deserializes
 
     JSON file to instances
     Attributes:
@@ -24,28 +24,28 @@ class FileStorage:
 
     def all(self):
         '''Returns the dictionary __objects'''
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         '''Sets in __objects obj with key <obj_class_name>.id'''
-        key = (f"{obj.__class__.__name__}.{obj.id}")
-        self.__objects[key] = obj
+        file_name = obj.__class__.__name__
+        FileStorage.__objects["{}.{}".format(file_name, obj.id)] = obj
 
     def save(self):
         '''Serializes __objects to the JSON file __file_path'''
-        obj_dictionary = {}
-
-        for key, value in self.__objects.items():
-            obj_dictionary[key] = value.to_dict()
-        with open(self.__file_path, "w", encoding="utf-8") as f:
-            json.dump(obj_dictionary, f)
+        obj_dict = FileStorage.__objects
+        obj_dicton = {obj: obj_dict[obj].to_dict() for obj in obj_dict.keys()}
+        with open(FileStorage.__file_path, "w") as f:
+            json.dump(obj_dicton, f)
 
     def reload(self):
         '''Deserializes the JSON file __file_path to __objects,if it exists'''
         try:
-            with open(self.__file_path, "r", encoding="utf-8") as f:
-                dictionary_obj = json.load(f)
-                for key, value in dictionary_obj.items():
-                    self.__objects[key] = eval(key.split(".")[0])(**value)
+            with open(FileStorage.__file_path) as f:
+                dicton_obj = json.load(f)
+                for n in dicton_obj.values():
+                    class_name = n["__class__"]
+                    del n["__class__"]
+                    self.new(eval(class_name)(**n))
         except FileNotFoundError:
             return
