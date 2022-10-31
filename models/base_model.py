@@ -37,7 +37,7 @@ class BaseModel:
 
         this format: [<class name>] (<self.id>) <self.__dict__>
         '''
-        temp = self.__class__.__name__
+        temp = type(self).__name__
         return "[{}] ({}) {}".format(temp, self.id, self.__dict__)
 
     def save(self):
@@ -51,7 +51,7 @@ class BaseModel:
         of the instance
         '''
         return_dict = self.__dict__.copy()
-        return_dict["__class__"] = self.__class__.__name__
+        return_dict["__class__"] = type(self).__name__
         return_dict["created_at"] = return_dict["created_at"].isoformat()
         return_dict["updated_at"] = return_dict["updated_at"].isoformat()
         return return_dict
