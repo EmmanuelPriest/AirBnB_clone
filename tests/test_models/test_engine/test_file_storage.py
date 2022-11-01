@@ -10,13 +10,7 @@ from models import storage
 import re
 import json
 import os
-import pep8
-from models.user import User
-from models.state import State
-from models.place import Place
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
+
 
 class TestFileStorage(unittest.TestCase):
     '''Test Cases for the FileStorage class'''
@@ -376,5 +370,5 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(str(e.exception), msg)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
