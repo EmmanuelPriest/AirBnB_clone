@@ -119,7 +119,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d["age"], b.age)
 
     def test_3_to_dict_no_args(self):
-        '''Tests to_dict() with no arguments''' 
+        '''Tests to_dict() with no arguments'''
         self.resetStorage()
         with self.assertRaises(TypeError) as e:
             BaseModel.to_dict()
