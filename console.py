@@ -5,6 +5,7 @@ import cmd
 import json
 from models.base_model import BaseModel
 from models import storage
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -52,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
                     1) or "") + " " + (match_attr_and_value.group(2) or "")
         command = method + " " + classname + " " + uid + " " + attr_and_value
         self.onecmd(command)
-        return
+        return command
 
     def update_dict(self, classname, uid, s_dict):
         '''Helper method for update() with a dictionary'''
