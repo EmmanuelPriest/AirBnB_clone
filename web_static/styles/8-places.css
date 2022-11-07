@@ -1,0 +1,86 @@
+/* The Places flexbox style */
+.places {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 100%;
+}
+
+/* The Article style */
+.places article {
+	border: 1px solid #ff5a5f;
+	border-radius: 4px;
+	margin: 20px;
+	padding: 20px;
+	width: 390px;
+}
+
+/* The Name and price header style */
+.places .name_and_price {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+/* The Price by night circle style */
+.places .price_by_night {
+	align-items: center;
+	border: 4px solid #ff5a5f;
+	border-radius: 50%;
+	color: #ff5a5f;
+	display: flex;
+	font-size: 30px;
+	height: 60px;
+	justify-content: center;
+	min-width: 60px;
+}
+
+/* The guests, rooms, and bathrooms information style */
+.places .information {
+	align-items: center;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	display: flex;
+	flex-direction: row;
+	height: 80px;
+	justify-content: space-around;
+	text-align: center;
+}
+
+/* The width of each guest/room/bathroom sticker style */
+.places .max_guest,
+.places .number_rooms,
+.places .number_bathrooms{
+	width: 100px;
+}
+
+/* The padding around owner style */
+.places .user {
+	margin: 20px auto 20px auto;
+}
+
+/* The header 1 Places style */
+.places h1 {
+	font-size: 30px;
+	font-weight: bold;
+	margin: .67em 0 .67em 0;
+	width: 100%;
+}
+
+/* The header 2 Places style */
+.places h2 {
+	font-size: 30px;
+	font-weight: bold;
+	margin: 0 auto;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+/* The footer Places style */
+footer {
+	position: relative;
+}
