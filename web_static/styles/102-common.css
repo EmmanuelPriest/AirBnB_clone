@@ -1,0 +1,22 @@
+/* The body style */
+body {
+  color: #484848;
+  font: 14px Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* The block horizontal scrolling style */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* The container style style */
+.container {
+  margin: 30px auto;
+  max-width: 1000px;
+}
+
+/* The strong style */
+strong {
+  font-weight: bold;
+}
